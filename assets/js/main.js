@@ -4,6 +4,7 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+
 (function() {
   "use strict";
 
@@ -132,3 +133,39 @@
   new PureCounter();
 
 })()
+
+  document.querySelector('.php-email-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent default form submission to allow custom handling
+    
+    var form = e.target;
+    var actionUrl = form.action; // URL to submit form data (FormSubmit)
+    
+    var formData = new FormData(form); // Collect form data
+
+    // Show loading message
+    document.querySelector('.loading').style.display = 'block';
+
+    // Send data via fetch API or XMLHttpRequest (this example uses fetch)
+    fetch(actionUrl, {
+      method: 'POST',
+      body: formData
+    })
+    .then(function(response) {
+      if (response.ok) {
+        // Success: Show thank you message
+        document.querySelector('.sent-message').style.display = 'block';
+      } else {
+        // Error: Show error message
+        document.querySelector('.error-message').style.display = 'block';
+      }
+      document.querySelector('.loading').style.display = 'none'; // Hide loading
+    })
+    .catch(function(error) {
+      // Network error: Show error message
+      document.querySelector('.error-message').style.display = 'block';
+      document.querySelector('.loading').style.display = 'none';
+    });
+  });
+
+
+
