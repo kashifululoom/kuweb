@@ -105,17 +105,17 @@ document.querySelector('.php-email-form').addEventListener('submit', function(e)
   
   var formData = new FormData(form); // Collect form data
   
-  // // Get the reCAPTCHA response
-  // var recaptchaResponse = grecaptcha.getResponse();
+  // Get the reCAPTCHA response
+  var recaptchaResponse = grecaptcha.getResponse();
   
-  // // If reCAPTCHA is not completed
-  // if (recaptchaResponse.length === 0) {
-  //   alert('Please complete the reCAPTCHA');
-  //   return; // Stop form submission
-  // }
+  // If reCAPTCHA is not completed
+  if (recaptchaResponse.length === 0) {
+    alert('Please complete the reCAPTCHA');
+    return; // Stop form submission
+  }
 
-  // // Append the reCAPTCHA response to form data
-  // formData.append('g-recaptcha-response', recaptchaResponse);
+  // Append the reCAPTCHA response to form data
+  formData.append('g-recaptcha-response', recaptchaResponse);
   
   // Show loading message
   const loadingMessage = document.querySelector('.loading');
