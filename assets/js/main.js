@@ -26,15 +26,16 @@
   // Back to top button
   let backtotop = select('.back-to-top');
   if (backtotop) {
-    const togglebacktotop = () => {
+    const toggleBacktotop = () => {
       if (window.scrollY > 100) {
         backtotop.classList.add('active');
       } else {
         backtotop.classList.remove('active');
       }
     }
-    window.addEventListener('load', togglebacktotop);
-    onscroll(document, togglebacktotop);
+    window.addEventListener('load', toggleBacktotop);
+    window.addEventListener('scroll', toggleBacktotop);
+
   }
 
   // Mobile nav toggle
@@ -91,7 +92,9 @@
   // Initiate Pure Counter
   new PureCounter();
 
-})();
+})
+
+();
 
 // Custom form submission with Fetch API and Google reCAPTCHA
 document.querySelector('.php-email-form').addEventListener('submit', function(e) {
@@ -102,17 +105,17 @@ document.querySelector('.php-email-form').addEventListener('submit', function(e)
   
   var formData = new FormData(form); // Collect form data
   
-  // Get the reCAPTCHA response
-  var recaptchaResponse = grecaptcha.getResponse();
+  // // Get the reCAPTCHA response
+  // var recaptchaResponse = grecaptcha.getResponse();
   
-  // If reCAPTCHA is not completed
-  if (recaptchaResponse.length === 0) {
-    alert('Please complete the reCAPTCHA');
-    return; // Stop form submission
-  }
+  // // If reCAPTCHA is not completed
+  // if (recaptchaResponse.length === 0) {
+  //   alert('Please complete the reCAPTCHA');
+  //   return; // Stop form submission
+  // }
 
-  // Append the reCAPTCHA response to form data
-  formData.append('g-recaptcha-response', recaptchaResponse);
+  // // Append the reCAPTCHA response to form data
+  // formData.append('g-recaptcha-response', recaptchaResponse);
   
   // Show loading message
   const loadingMessage = document.querySelector('.loading');
