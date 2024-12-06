@@ -120,7 +120,7 @@ document.querySelector('.php-email-form').addEventListener('submit', function(e)
   // Show loading message
   const loadingMessage = document.querySelector('.loading');
   const successMessage = document.querySelector('.sent-message');
-  const errorMessage = document.querySelector('.error-message');
+  // const errorMessage = document.querySelector('.error-message');
   
   loadingMessage.style.display = 'block';
   successMessage.style.display = 'none';  // Hide success message initially
