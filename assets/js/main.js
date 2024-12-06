@@ -23,7 +23,7 @@
     }
   }
 
-  // Back to top button
+  // Back to top button functionality
   let backtotop = select('.back-to-top');
   if (backtotop) {
     const toggleBacktotop = () => {
@@ -35,17 +35,16 @@
     }
     window.addEventListener('load', toggleBacktotop);
     window.addEventListener('scroll', toggleBacktotop);
-
   }
 
-  // Mobile nav toggle
+  // Mobile navigation toggle
   on('click', '.mobile-nav-toggle', function(e) {
     select('#navbar').classList.toggle('navbar-mobile');
     this.classList.toggle('bi-list');
     this.classList.toggle('bi-x');
   });
 
-  // Preloader
+  // Preloader functionality
   let preloader = select('#preloader');
   if (preloader) {
     window.addEventListener('load', () => {
@@ -91,10 +90,7 @@
 
   // Initiate Pure Counter
   new PureCounter();
-
-})
-
-();
+})();
 
 // Custom form submission with Fetch API and Google reCAPTCHA
 document.querySelector('.php-email-form').addEventListener('submit', function(e) {
@@ -117,7 +113,7 @@ document.querySelector('.php-email-form').addEventListener('submit', function(e)
   // Append the reCAPTCHA response to form data
   formData.append('g-recaptcha-response', recaptchaResponse);
   
-  // Show loading message
+  // Show loading message and hide success message
   const loadingMessage = document.querySelector('.loading');
   const successMessage = document.querySelector('.sent-message');
   
@@ -137,6 +133,6 @@ document.querySelector('.php-email-form').addEventListener('submit', function(e)
     loadingMessage.style.display = 'none'; // Hide loading spinner
   })
   .catch(function(error) {
-    loadingMessage.style.display = 'none';
+    loadingMessage.style.display = 'none'; // Hide loading spinner in case of an error
   });
 });
