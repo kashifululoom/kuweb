@@ -124,7 +124,7 @@ document.querySelector('.php-email-form').addEventListener('submit', function(e)
   
   loadingMessage.style.display = 'block';
   successMessage.style.display = 'none';  // Hide success message initially
-  errorMessage.style.display = 'none';  // Hide error message initially
+  // errorMessage.style.display = 'none';  // Hide error message initially
 
   // Send data via fetch API
   fetch(actionUrl, {
@@ -136,14 +136,14 @@ document.querySelector('.php-email-form').addEventListener('submit', function(e)
       // Success: Show thank you message
       successMessage.style.display = 'block';
     } else {
-      // Error: Show error message
-      errorMessage.style.display = 'block';
+      // // Error: Show error message
+      // errorMessage.style.display = 'block';
     }
     loadingMessage.style.display = 'none'; // Hide loading spinner
   })
   .catch(function(error) {
     // Network error: Show error message
-    errorMessage.style.display = 'block';
+    // errorMessage.style.display = 'block';
     loadingMessage.style.display = 'none';
   });
 });
