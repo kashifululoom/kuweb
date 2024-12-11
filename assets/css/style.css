@@ -1278,6 +1278,25 @@ section {
 .pricing .advanced:hover {
   background: #3b88b8;
 }
+/*donate*/
+#gpaybtn{
+
+  height: 70px;
+  width: 150px; 
+  background-color: #0b507a;
+  color: white;
+  border-radius: 50px; 
+  text-decoration: none;
+}
+.btn{
+ 
+  border: none;
+}
+.btn:hover #gpaybtn{
+ 
+ background: linear-gradient(90deg, #0b507a, #0d7495);;
+
+ }
 
 /* Animations for appearance */
 @keyframes fadeInUp {
