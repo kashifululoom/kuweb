@@ -23,7 +23,7 @@
     }
   }
 
-  // Back to top button functionality
+  // Back to top button
   let backtotop = select('.back-to-top');
   if (backtotop) {
     const toggleBacktotop = () => {
@@ -35,16 +35,17 @@
     }
     window.addEventListener('load', toggleBacktotop);
     window.addEventListener('scroll', toggleBacktotop);
+
   }
 
-  // Mobile navigation toggle
+  // Mobile nav toggle
   on('click', '.mobile-nav-toggle', function(e) {
     select('#navbar').classList.toggle('navbar-mobile');
     this.classList.toggle('bi-list');
     this.classList.toggle('bi-x');
   });
 
-  // Preloader functionality
+  // Preloader
   let preloader = select('#preloader');
   if (preloader) {
     window.addEventListener('load', () => {
@@ -90,7 +91,10 @@
 
   // Initiate Pure Counter
   new PureCounter();
-})();
+
+})
+
+();
 
 // Custom form submission with Fetch API and Google reCAPTCHA
 document.querySelector('.php-email-form').addEventListener('submit', function(e) {
@@ -101,24 +105,26 @@ document.querySelector('.php-email-form').addEventListener('submit', function(e)
   
   var formData = new FormData(form); // Collect form data
   
-  // Get the reCAPTCHA response
-  var recaptchaResponse = grecaptcha.getResponse();
+  // // Get the reCAPTCHA response
+  // var recaptchaResponse = grecaptcha.getResponse();
   
-  // If reCAPTCHA is not completed
-  if (recaptchaResponse.length === 0) {
-    alert('Please complete the reCAPTCHA');
-    return; // Stop form submission
-  }
+  // // If reCAPTCHA is not completed
+  // if (recaptchaResponse.length === 0) {
+  //   alert('Please complete the reCAPTCHA');
+  //   return; // Stop form submission
+  // }
 
-  // Append the reCAPTCHA response to form data
-  formData.append('g-recaptcha-response', recaptchaResponse);
+  // // Append the reCAPTCHA response to form data
+  // formData.append('g-recaptcha-response', recaptchaResponse);
   
-  // Show loading message and hide success message
+  // Show loading message
   const loadingMessage = document.querySelector('.loading');
   const successMessage = document.querySelector('.sent-message');
+  const errorMessage = document.querySelector('.error-message');
   
   loadingMessage.style.display = 'block';
   successMessage.style.display = 'none';  // Hide success message initially
+  errorMessage.style.display = 'none';  // Hide error message initially
 
   // Send data via fetch API
   fetch(actionUrl, {
@@ -129,10 +135,26 @@ document.querySelector('.php-email-form').addEventListener('submit', function(e)
     if (response.ok) {
       // Success: Show thank you message
       successMessage.style.display = 'block';
+    } else {
+      // Error: Show error message
+      errorMessage.style.display = 'block';
     }
     loadingMessage.style.display = 'none'; // Hide loading spinner
   })
   .catch(function(error) {
-    loadingMessage.style.display = 'none'; // Hide loading spinner in case of an error
+    // Network error: Show error message
+    errorMessage.style.display = 'block';
+    loadingMessage.style.display = 'none';
   });
 });
+
+function payWithUPI() {
+
+  var upiID = 'mohammadnoman247@oksbi';  
+
+ 
+  var upiLink = '' + upiID;
+
+  // Redirect to UPI app
+  window.location.href = upiLink;
+}
