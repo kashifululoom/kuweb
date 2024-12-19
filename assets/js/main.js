@@ -149,11 +149,12 @@ document.querySelector('.php-email-form').addEventListener('submit', function(e)
 });
 
 function payWithUPI() {
-  var upiID = 'mohammadnoman247@oksbi';  
+  var upiID = '9427705810@ibl';  
 
-  // Proper UPI link format
-  var upiLink = 'upi://pay?pa=' + upiID + '&pn=YourName&mc=123456&tid=000000&url=https://example.com';
+  // Proper UPI link format (with basic parameters)
+  var upiLink = 'upi://pay?pa=' + upiID + '&pn=YourName&am=10.00&cu=INR';
 
   // Redirect to UPI app
   window.location.href = upiLink;
 }
+
