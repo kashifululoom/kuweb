@@ -149,12 +149,12 @@ document.querySelector('.php-email-form').addEventListener('submit', function(e)
 });
 
 function payWithUPI() {
-  var upiID = '9427705810@ibl';  
+  var upiID = '9427705810@ibl';  // Your UPI ID
+  
+  // UPI link with only the UPI ID
+  var upiLink = 'upi://pay?pa=' + upiID;
 
-  // Proper UPI link format (with basic parameters)
-  var upiLink = 'upi://pay?pa=' + upiID + '&pn=YourName&am=10.00&cu=INR';
-
-  // Redirect to UPI app
+  // Redirect to the UPI app (e.g., Google Pay, PhonePe, etc.)
   window.location.href = upiLink;
 }
 
