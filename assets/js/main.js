@@ -149,7 +149,7 @@ document.querySelector('.php-email-form').addEventListener('submit', function(e)
 });
 
 function payWithUPI() {
-  var upiID = '9427705810@ibl';  // Your UPI ID
+  var upiID = '9427705810@ibl';  
   
   // UPI link with only the UPI ID
   var upiLink = 'upi://pay?pa=' + upiID;
