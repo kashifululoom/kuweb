@@ -147,6 +147,17 @@ document.querySelector('.php-email-form').addEventListener('submit', function(e)
     loadingMessage.style.display = 'none';
   });
 });
+document.addEventListener('DOMContentLoaded', function() {
+  const gpayButton = document.getElementById('gpaybtn');
+
+  // Check if the element exists before adding the event listener
+  if (gpayButton) {
+    gpayButton.addEventListener('click', payWithUPI);  // Add event listener
+  } else {
+    console.error('Button with ID "gpaybtn" not found!');
+  }
+});
+
 
 function payWithUPI() {
   var upiID = '9427705810@ibl';  
