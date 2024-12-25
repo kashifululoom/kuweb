@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Check if the element exists before adding the event listener
   if (gpayButton) {
-    gpayButton.addEventListener('click', payWithUPI);  // Add event listener
+    gpayButton.addEventListener('click', payWithUPI;  // Add event listener
   } else {
     console.error('Button with ID "gpaybtn" not found!');
   }
