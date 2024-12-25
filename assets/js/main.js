@@ -152,12 +152,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Check if the element exists before adding the event listener
   if (gpayButton) {
-    gpayButton.addEventListener('click', payWithUPI;  // Add event listener
+    gpayButton.addEventListener('click', function(event) {
+      event.preventDefault();  // Prevent form submission or page reload
+      payWithUPI();            // Call the payWithUPI function
+    });
   } else {
     console.error('Button with ID "gpaybtn" not found!');
   }
 });
-
 
 function payWithUPI() {
   var upiID = '9427705810@ibl';  
