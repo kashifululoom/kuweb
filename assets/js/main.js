@@ -149,22 +149,12 @@ document.querySelector('.php-email-form').addEventListener('submit', function(e)
 });
 
 function payWithUPI() {
-  var upiID = '9427705810@ibl';  // UPI ID of the person or account to receive payment
-
+  var upiID = '9427705810@ibl';  
+  
   // UPI link with only the UPI ID
-  var upiLink = 'upi://pay?pa=' + upiID; // This constructs the UPI payment URL with the given UPI ID
+  var upiLink = 'upi://pay?pa=' + upiID;
 
-  // Try opening the UPI link
-  var startTime = Date.now();  // Store the current time to measure how long it takes to open the UPI app
-  window.location.href = upiLink;  // This line will try to open the UPI payment app (Google Pay, PhonePe, etc.) using the UPI link
-
-  // Check if UPI app opens or not (Timeout check)
-  setTimeout(function() {
-    // If more than 2 seconds have passed and the UPI app did not open, show a fallback message
-    if (Date.now() - startTime < 2000) {
-      alert("It seems that the UPI app did not open. Please make sure you have a UPI-enabled app (like Google Pay or PhonePe) installed and try again.");
-    }
-  }, 2000);
+  // Redirect to the UPI app (e.g., Google Pay, PhonePe, etc.)
+  window.location.href = upiLink;
 }
-
 
