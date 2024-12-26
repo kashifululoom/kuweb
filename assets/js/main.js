@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-function  {
+function payWithUPI() {
       // UPI Payment Link with your UPI ID
       const upiLink = "upi://pay?pa=9427705810@ibl&pn=YourName&mc=1234&tid=abcd1234&url=https://example.com";
       window.location.href = upiLink;  // Redirect to the UPI payment link
