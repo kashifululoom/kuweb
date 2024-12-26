@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
- const  = () => {
+ const payWithUPI = () => {
     // UPI link for mobile devices with UPI apps installed
     const upiLink = "upi://pay?pa=9427705810@ibl&pn=YourName&mc=1234&tid=abcd1234&url=https://example.com";
 
