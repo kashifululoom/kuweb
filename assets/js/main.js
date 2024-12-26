@@ -159,13 +159,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-function payWithUPI() {
-  var upiID = '9427705810@ibl';  
-  
-  // UPI link with only the UPI ID
-  var upiLink = 'upi://pay?pa=' + upiID;
-
-  // Redirect to the UPI app (e.g., Google Pay, PhonePe, etc.)
-  window.location.href = upiLink;
-}
-
+function  {
+      // UPI Payment Link with your UPI ID
+      const upiLink = "upi://pay?pa=9427705810@ibl&pn=YourName&mc=1234&tid=abcd1234&url=https://example.com";
+      window.location.href = upiLink;  // Redirect to the UPI payment link
+    }
