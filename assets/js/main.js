@@ -159,8 +159,16 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-function payWithUPI() {
-      // UPI Payment Link with your UPI ID
-      const upiLink = "upi://pay?pa=9427705810@ibl&pn=YourName&mc=1234&tid=abcd1234&url=https://example.com";
-      window.location.href = upiLink;  // Redirect to the UPI payment link
+ const  = () => {
+    // UPI link for mobile devices with UPI apps installed
+    const upiLink = "upi://pay?pa=9427705810@ibl&pn=YourName&mc=1234&tid=abcd1234&url=https://example.com";
+
+    // Check if the user is on a mobile device
+    if (navigator.userAgent.match(/Android|iPhone|iPad|iPod/i)) {
+      window.location.href = upiLink;
+    } else {
+      // Fallback for desktop: Use Google Pay link or PhonePe URL
+      // Google Pay (GPay) can be accessed through a web URL
+      const googlePayLink = "https://pay.google.com/gp/p/ui/pay?pa=9427705810@ibl";
+      window.location.href = googlePayLink; // Redirect to Google Pay on desktop
     }
