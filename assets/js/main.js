@@ -4,16 +4,12 @@
   // Easy selector helper function
   const select = (el, all = false) => {
     el = el.trim();
-    if (all) {
-      return [...document.querySelectorAll(el)];
-    } else {
-      return document.querySelector(el);
-    }
+    return all ? [...document.querySelectorAll(el)] : document.querySelector(el);
   }
 
   // Easy event listener function
   const on = (type, el, listener, all = false) => {
-    let selectEl = select(el, all);
+    const selectEl = select(el, all);
     if (selectEl) {
       if (all) {
         selectEl.forEach(e => e.addEventListener(type, listener));
@@ -35,11 +31,10 @@
     }
     window.addEventListener('load', toggleBacktotop);
     window.addEventListener('scroll', toggleBacktotop);
-
   }
 
   // Mobile nav toggle
-  on('click', '.mobile-nav-toggle', function(e) {
+  on('click', '.mobile-nav-toggle', function() {
     select('#navbar').classList.toggle('navbar-mobile');
     this.classList.toggle('bi-list');
     this.classList.toggle('bi-x');
@@ -91,62 +86,45 @@
 
   // Initiate Pure Counter
   new PureCounter();
-
-})
-
-();
+})();
 
 // Custom form submission with Fetch API and Google reCAPTCHA
 document.querySelector('.php-email-form').addEventListener('submit', function(e) {
-  e.preventDefault(); // Prevent default form submission to allow custom handling
-  
-  var form = e.target;
-  var actionUrl = form.action; // URL to submit form data (FormSubmit or Email service URL)
-  
-  var formData = new FormData(form); // Collect form data
-  
-  // // Get the reCAPTCHA response
-  // var recaptchaResponse = grecaptcha.getResponse();
-  
-  // // If reCAPTCHA is not completed
-  // if (recaptchaResponse.length === 0) {
-  //   alert('Please complete the reCAPTCHA');
-  //   return; // Stop form submission
-  // }
+  e.preventDefault(); // Prevent default form submission
 
-  // // Append the reCAPTCHA response to form data
-  // formData.append('g-recaptcha-response', recaptchaResponse);
-  
+  const form = e.target;
+  const actionUrl = form.action; // URL to submit form data
+  const formData = new FormData(form); // Collect form data
+
   // Show loading message
   const loadingMessage = document.querySelector('.loading');
   const successMessage = document.querySelector('.sent-message');
   const errorMessage = document.querySelector('.error-message');
-  
+
   loadingMessage.style.display = 'block';
-  successMessage.style.display = 'none';  // Hide success message initially
-  errorMessage.style.display = 'none';  // Hide error message initially
+  successMessage.style.display = 'none';
+  errorMessage.style.display = 'none';
 
   // Send data via fetch API
   fetch(actionUrl, {
     method: 'POST',
     body: formData
   })
-  .then(function(response) {
+  .then(response => {
     if (response.ok) {
-      // Success: Show thank you message
       successMessage.style.display = 'block';
     } else {
-      // Error: Show error message
       errorMessage.style.display = 'block';
     }
     loadingMessage.style.display = 'none'; // Hide loading spinner
   })
-  .catch(function(error) {
-    // Network error: Show error message
+  .catch(error => {
     errorMessage.style.display = 'block';
     loadingMessage.style.display = 'none';
   });
 });
+
+// Google Pay Button
 document.addEventListener('DOMContentLoaded', function() {
   const gpayButton = document.getElementById('gpaybtn');
   if (gpayButton) {
@@ -159,16 +137,14 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
- const payWithUPI = () => {
-    // UPI link for mobile devices with UPI apps installed
-    const upiLink = "upi://pay?pa=9427705810@ibl&pn=YourName&mc=1234&tid=abcd1234&url=https://example.com";
+// Pay with UPI function
+const payWithUPI = () => {
+  const upiLink = "upi://pay?pa=9427705810@ibl&pn=YourName&mc=1234&tid=abcd1234&url=https://example.com";
 
-    // Check if the user is on a mobile device
-    if (navigator.userAgent.match(/Android|iPhone|iPad|iPod/i)) {
-      window.location.href = upiLink;
-    } else {
-      // Fallback for desktop: Use Google Pay link or PhonePe URL
-      // Google Pay (GPay) can be accessed through a web URL
-      const googlePayLink = "https://pay.google.com/gp/p/ui/pay?pa=9427705810@ibl";
-      window.location.href = googlePayLink; // Redirect to Google Pay on desktop
-    }
+  if (navigator.userAgent.match(/Android|iPhone|iPad|iPod/i)) {
+    window.location.href = upiLink;
+  } else {
+    const googlePayLink = "https://pay.google.com/gp/p/ui/pay?pa=9427705810@ibl";
+    window.location.href = googlePayLink; // Redirect to Google Pay on desktop
+  }
+};
